@@ -1,0 +1,24 @@
+C:\Users\ertug\OneDrive\Masaüstü\Ertusta\Abinin Yazılım Macerası\c#\project\Library\obj\Debug\Library.csproj.AssemblyReference.cache
+C:\Users\ertug\OneDrive\Masaüstü\Ertusta\Abinin Yazılım Macerası\c#\project\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+C:\Users\ertug\OneDrive\Masaüstü\Ertusta\Abinin Yazılım Macerası\c#\project\Library\bin\Debug\Library.exe.config
+C:\Users\ertug\OneDrive\Masaüstü\Ertusta\Abinin Yazılım Macerası\c#\project\Library\bin\Debug\Library.exe
+C:\Users\ertug\OneDrive\Masaüstü\Ertusta\Abinin Yazılım Macerası\c#\project\Library\bin\Debug\Library.pdb
+C:\Users\ertug\OneDrive\Masaüstü\Ertusta\Abinin Yazılım Macerası\c#\project\Library\obj\Debug\Library.exe
+C:\Users\ertug\OneDrive\Masaüstü\Ertusta\Abinin Yazılım Macerası\c#\project\Library\obj\Debug\Library.pdb
+C:\Users\ertug\OneDrive\Masaüstü\Ertusta\Abinin Yazılım Macerası\c#\project\Library\obj\Debug\Library.csproj.GenerateResource.cache
+C:\Users\ertug\OneDrive\Masaüstü\Ertusta\Abinin Yazılım Macerası\c#\project\Library\obj\Debug\Library.Form1.resources
+C:\Users\ertug\OneDrive\Masaüstü\Ertusta\Abinin Yazılım Macerası\c#\project\Library\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ertug\OneDrive\Masaüstü\Ertusta\Abinin Yazılım Macerası\c#\project\Library\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ertug\OneDrive\Masaüstü\Ertusta\Abinin Yazılım Macerası\c#\project\Library\obj\Debug\Library.csproj.CopyComplete
+C:\Users\ertug\OneDrive\Masaüstü\Library\bin\Debug\Library.exe.config
+C:\Users\ertug\OneDrive\Masaüstü\Library\bin\Debug\Library.exe
+C:\Users\ertug\OneDrive\Masaüstü\Library\bin\Debug\Library.pdb
+C:\Users\ertug\OneDrive\Masaüstü\Library\bin\Debug\Newtonsoft.Json.dll
+C:\Users\ertug\OneDrive\Masaüstü\Library\bin\Debug\Newtonsoft.Json.xml
+C:\Users\ertug\OneDrive\Masaüstü\Library\obj\Debug\Library.csproj.AssemblyReference.cache
+C:\Users\ertug\OneDrive\Masaüstü\Library\obj\Debug\Library.Form1.resources
+C:\Users\ertug\OneDrive\Masaüstü\Library\obj\Debug\Library.csproj.GenerateResource.cache
+C:\Users\ertug\OneDrive\Masaüstü\Library\obj\Debug\Library.csproj.CoreCompileInputs.cache
+C:\Users\ertug\OneDrive\Masaüstü\Library\obj\Debug\Library.csproj.CopyComplete
+C:\Users\ertug\OneDrive\Masaüstü\Library\obj\Debug\Library.exe
+C:\Users\ertug\OneDrive\Masaüstü\Library\obj\Debug\Library.pdb

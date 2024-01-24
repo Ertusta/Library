@@ -8,7 +8,7 @@ namespace Library
 {
     internal class Book
     {
-        //field
+        //tüm değerler
         string title;
         string writer;
         Int64 isbn;
@@ -16,7 +16,7 @@ namespace Library
         int borrowedBook;
         DateTime expirationDate;
 
-        //constructor
+        //constructer
         public Book(string title, string writer , Int64 isbn, int numberOfCopies, int borrowedBook, DateTime expirationDate)
         {
             this.title = title;
@@ -24,10 +24,12 @@ namespace Library
             this.isbn = isbn;
             this.numberOfCopies = numberOfCopies;
             this.borrowedBook = borrowedBook;
-            this.expirationDate = expirationDate;   
+            this.expirationDate = expirationDate;
         }
 
-        //access
+        
+
+        //erişim
         public string Title
         {
             get { return title; }

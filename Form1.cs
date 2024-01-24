@@ -1,15 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 using System.IO;
 using Newtonsoft.Json;
+
+
 
 namespace Library
 {
@@ -18,61 +13,88 @@ namespace Library
         public Form1()
         {
             InitializeComponent();
+            readData();
+            resetList1();
+            resetList2();
+            resetList3();
         }
 
         //emty classes
-        Book[] classList = new Book[250];
-        Book[] disPlayList = new Book[250];
-        Book[] disPlayList2 = new Book[250];
+        List<Book> classList = new List<Book>();
+        List<Book> disPlayList = new List<Book>();
+        List<Book> disPlayList2 = new List<Book>();
+        List<Book> disPlayList3 = new List<Book>();
 
 
 
-        string fileSource = Path.Combine(Environment.CurrentDirectory, "source.json");
+        private void readData()
+        {
+            string jsonDataa = File.ReadAllText("source.json");
+            classList = JsonConvert.DeserializeObject<List<Book>>(jsonDataa);
 
-        // string fileSource = @"C:\Users\ertug\OneDrive\Masaüstü\Ertusta\Abinin Yazılım Macerası\c#\project\Library\source\source.json";
+            
+        }
 
-
-
-        // class value
-        public int BookNumber = 0;
-
+        private void setData() 
+        {
+            string jsondata = JsonConvert.SerializeObject(classList);
+            File.WriteAllText("source.json", jsondata);
+        }
+        
+        
 
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            
+            
             //constructer input
             string title = textBox1.Text;
             string writer = textBox2.Text;
-            Int64 ısbn = Convert.ToInt64(textBox3.Text);
-            bool Control = false;
+            Int64 isbn=1;
+            bool control = false;
 
-            
+            label5.Text = "succecfull";
 
-            for (int i = 0; i != BookNumber; i += 1)
+            try
             {
-               if( classList[i].Title==title && classList[i].Writer == writer)
+                isbn = Convert.ToInt64(textBox3.Text);
+            }
+            catch (Exception ex)
+            {
+                label5.Text = "Unvalid ISBN";
+                textBox1.Text = "";
+                textBox2.Text = "";
+                textBox3.Text = "";
+
+
+            }
+
+
+
+            foreach (Book book in classList)
+            {
+               if (book.Title == title && book.Writer == writer)
                 {
-                    classList[i].NumberOfCopies +=1 ;
-                    Control = true;
+                    book.NumberOfCopies += 1;
+                    control = true;
+                    setData();
                 }
             }
 
             //constructer
-            if (Control == false)
+            if (control == false)
             {
-                classList[BookNumber] = new Book(title, writer, ısbn, 1, 0);
-                BookNumber += 1;
+                DateTime time = DateTime.Now.Date;
+                classList.Add(new Book(title, writer, isbn, 1, 0, time.AddDays(15)));
 
-               string jsondata = JsonConvert.SerializeObject(classList);
-                File.WriteAllText(fileSource, jsondata);
+                setData();
             }
 
 
-            label5.Text = "Successfull" + "(" + BookNumber + ")";
+           
 
-
-            //new class value
-            
 
             resetList1();
             textBox1.Text = "";
@@ -81,92 +103,118 @@ namespace Library
 
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            resetList1();
+        }
+
+       
+
+
         private void resetList1()
         {
 
             dataGridView1.Rows.Clear();
-            int temp = 0;
+            disPlayList.Clear();
+
 
 
             if ("" != textBox4.Text)
             {
-                for (int i = 0; i != BookNumber; i += 1)
+                foreach (Book book in classList)
                 {
 
 
-                    if (classList[i].Title == textBox4.Text)
+                    if (book.Title == textBox4.Text)
                     {
 
-                        disPlayList[temp] = classList[i];
-                        temp += 1;
+                        disPlayList.Add(book);
+                        
+
                     }
                 }
             }
             else if (("" != textBox5.Text))
             {
-                for (int i = 0; i != BookNumber; i += 1)
+                foreach (Book book in classList)
                 {
-                    if (classList[i].Writer == textBox5.Text)
+                    if (book.Writer == textBox5.Text)
                     {
-                        disPlayList[temp] = classList[i];
-                        temp += 1;
+                        disPlayList.Add(book);
                     }
                 }
             }
             else
             {
-                for (int i = 0; i != BookNumber; i += 1)
+                foreach (Book book in classList)
                 {
-                    disPlayList[temp] = classList[i];
-                    temp += 1;
+                    disPlayList.Add(book);
                 }
             }
 
-            for (int i = 0; i != temp; i += 1)
+            
+
+
+
+            foreach (Book book in disPlayList)
             {
-                dataGridView1.Rows.Add(disPlayList[i].Title, disPlayList[i].Writer, disPlayList[i].Isbn, disPlayList[i].NumberOfCopies, disPlayList[i].BorrowedBook);
+                dataGridView1.Rows.Add(book.Title, book.Writer, book.Isbn, book.NumberOfCopies, book.BorrowedBook);
             }
         }
 
         private void resetList2()
         {
             dataGridView2.Rows.Clear();
-            int temp = 0;
+            disPlayList2.Clear();
 
-            for (int i = 0; i != BookNumber; i += 1)
+
+           foreach (Book book in classList)
             {
-                if (classList[i].BorrowedBook > 0)
+                if (book.BorrowedBook > 0)
                 {
-                    disPlayList2[temp] = classList[i];
-                    temp += 1;
-
+                    disPlayList2.Add(book);
                 }
             }
-            for (int i = 0; i != temp; i += 1)
+            foreach (Book book in disPlayList2)
             {
-                dataGridView2.Rows.Add(disPlayList2[i].Title, disPlayList2[i].Writer, disPlayList2[i].Isbn, disPlayList2[i].NumberOfCopies, disPlayList2[i].BorrowedBook);
+
+                dataGridView2.Rows.Add(book.Title, book.Writer, book.Isbn, book.NumberOfCopies, book.BorrowedBook,book.ExpirationDate);
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void resetList3()
         {
-            resetList1();
+            dataGridView3.Rows.Clear();
+            disPlayList3.Clear();
+            foreach (Book book in classList)
+            {
+                DateTime today = DateTime.Now;
+                if(book.ExpirationDate < today)
+                {
+                    disPlayList3.Add(book);
+                }
+            }
+
+            foreach (Book book in disPlayList3)
+            {
+                dataGridView3.Rows.Add(book.Title, book.Writer, book.Isbn, book.NumberOfCopies, book.BorrowedBook);
+            }
         }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-            resetList2();
-        }
+        
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (disPlayList[e.RowIndex].NumberOfCopies != 0)
             {
                 disPlayList[e.RowIndex].NumberOfCopies -= 1;
                 disPlayList[e.RowIndex].BorrowedBook += 1;
+
+                setData();
             }
 
             resetList1();
             resetList2();
+            resetList3();
         }
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -174,10 +222,18 @@ namespace Library
             {
                 disPlayList2[e.RowIndex].NumberOfCopies += 1;
                 disPlayList2[e.RowIndex].BorrowedBook -= 1;
+                setData();
             }
             resetList1();
             resetList2();
+            resetList3();
         }
+
+        private void dataGridView3_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
 
 
 
@@ -228,5 +284,17 @@ namespace Library
         {
 
         }
+
+        private void textBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+       
     }
 }

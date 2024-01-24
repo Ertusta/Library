@@ -11,18 +11,20 @@ namespace Library
         //field
         string title;
         string writer;
-        Int64 ısbn;
+        Int64 isbn;
         int numberOfCopies;
         int borrowedBook;
+        DateTime expirationDate;
 
         //constructor
-        public Book(string title, string writer, Int64 ısbn, int numberOfCopies, int borrowedBook)
+        public Book(string title, string writer , Int64 isbn, int numberOfCopies, int borrowedBook, DateTime expirationDate)
         {
             this.title = title;
             this.writer = writer;
-            this.ısbn = ısbn;
+            this.isbn = isbn;
             this.numberOfCopies = numberOfCopies;
             this.borrowedBook = borrowedBook;
+            this.expirationDate = expirationDate;   
         }
 
         //access
@@ -38,7 +40,7 @@ namespace Library
 
         public Int64 Isbn
         {
-            get { return ısbn; }
+            get { return isbn; }
         }
 
         public int NumberOfCopies
@@ -52,7 +54,15 @@ namespace Library
         {
             get { return borrowedBook; }
             set { borrowedBook = value; }
+
         }
+
+       public DateTime ExpirationDate
+        {
+            get { return expirationDate; }
+            set { expirationDate = value; }
+        }
+
 
 
     }
